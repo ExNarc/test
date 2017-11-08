@@ -12,6 +12,6 @@ class AssignTaskTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\AssignTask::class, 3)->create();
+        factory(App\AssignTask::class, 15)->create();
     }
 }

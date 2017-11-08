@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupsTableSeeder::class);
         $this->call(UsersGroupsTableSeeder::class);
         $this->call(AssignTaskTableSeeder::class);
-        $this->call(LevelTableSeeder::class);
+        $this->call(QuestionLogTableSeeder::class);
+
     }
 }

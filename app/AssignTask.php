@@ -24,4 +24,8 @@ class AssignTask extends Model
     {
         return $this->belongsToMany('App\Group')->withTimestamps();//->withTimestamps()
     }
+    public function QuestionLog()
+    {
+        return $this->hasMany('App\QuestionLog');//->withTimestamps()
+    }
 }

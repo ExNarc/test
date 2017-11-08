@@ -1,15 +1,13 @@
 <!-- index.blade.php -->
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'User')
+
+@section('content_header')
+    <h1>User</h1>
+@stop
 
 @section('content')
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Index Page</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  </head>
-  <body>
     <div class="container">
     <br />
     @if (\Session::has('success'))
@@ -18,7 +16,6 @@
       </div><br />
      @endif
     <table class="table table-striped">
-    <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -27,8 +24,6 @@
         <th colspan="1">Action</th>
         <th colspan="1"><a href="{{action(('UserController' . '@create'))}}" class="btn btn-warning">Add</a></th>
       </tr>
-    </thead>
-    <tbody>
       @foreach($users as $user)
       <tr>
         <td>{{$user['id']}}</td>
@@ -49,9 +44,6 @@
         </td>
       </tr>
       @endforeach
-    </tbody>
   </table>
   </div>
-  </body>
-</html>
-@endsection
+@stop

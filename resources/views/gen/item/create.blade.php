@@ -1,9 +1,14 @@
 <!-- edit.blade.php -->
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('content')        
+@section('title', 'Item Create')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('js/function.js')}}"></script>
+@section('content_header')
+    <h1>Item Create</h1>
+@stop
+
+@section('content')
 <div class="container">
 @if ($errors->any())
       <div class="alert alert-danger">
@@ -40,8 +45,14 @@
             </select>
            </div>
         </div>
-      @else
-      
+      @elseif($key=="question")
+      <div class="row">
+        <div class="form-group col-md-8">
+          <label for="{{ $key }}">{{ ucwords($key) }}:</label>
+          <textarea name="{{ $key }}" id="{{ $key }}"></textarea>
+        </div>
+      </div>
+      @else 
         <div class="row">
            <div class="form-group col-md-8">
             <label for="{{ $key }}">{{ ucwords($key) }}:</label>
@@ -63,9 +74,12 @@
           </div>
         </div>
       </form>
+      <script src="{{ URL::to('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+      <script src="{{ URL::to('js/textEditor.js')}}"></script>
+      <script>userEditor();</script>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@stop     

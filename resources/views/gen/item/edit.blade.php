@@ -1,10 +1,15 @@
 <!-- edit.blade.php -->
-@extends('layouts.app')
-
+@extends('adminlte::page')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('js/function.js')}}"></script>
+@section('title', 'Item Edit')
+
+@section('content_header')
+    <h1>Item Edit</h1>
+@stop
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -56,10 +61,15 @@
         <div class="row">
            <div class="form-group col-md-8">
             <label for="question">Question:</label>
-            <input type="text" class="form-control" name="question" value="{{$question['question']}}">
+            <textarea name="question" id="question"></textarea>
+           
            </div>
         </div>
-
+        <div class="row">
+          <div class="form-group col-md-8">
+            <a id='addAnswer' class="btn btn-primary">Add Answer</a>
+          </div>
+        </div>
         <?php $i=0?>
         @foreach ($answers as $answer)
         <div class="row">
@@ -68,8 +78,9 @@
             <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <input type="text" class="form-control" name="answers[answer][]" value="{{$answer['answer']}}">
-            
+            <!--<input type="text" class="form-control" name="answers[answer][]" value="{{$answer['answer']}}">-->
+            <textarea name="answers[answer][]"></textarea>
+              
             <label for="answers[correct][{{$i}}]">Corrrect:</label>
             <label class="radio-inline">
                <input name="answers[correct][{{$i}}]" value="1" required="" type="radio" @if($answer['correct']==1) checked @endif>True
@@ -80,11 +91,6 @@
           </div>
         </div>        
         @endforeach
-        <div class="row">
-          <div class="form-group col-md-8">
-            <a id='addAnswer' class="btn btn-primary">Add Answer</a>
-          </div>
-        </div>
         <div id="Answer"></div>
         <div class="row">
           <div class="form-group col-md-8">
@@ -93,9 +99,15 @@
           </div>
         </div>
       </form>
+      <script src="{{ URL::to('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+      <script src="{{ URL::to('js/textEditor.js')}}"></script>
+      <script>
+        $("#question").html("{{$question['question']}}");
+        userEditor();
+      </script>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@stop

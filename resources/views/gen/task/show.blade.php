@@ -1,6 +1,12 @@
 <!-- list.blade.php -->
 
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Task Item')
+
+@section('content_header')
+    <h1>Task's Item</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -53,4 +59,4 @@
 </table>
 
   </div>
-@endsection
+@stop

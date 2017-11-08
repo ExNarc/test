@@ -14,11 +14,13 @@ Auth::routes();
 Route::any('/', function () {
     //
 });
-Route::get('home', 'HomeController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/chart', 'chart@index');
+
+//Route::get('/', function () {
+    //return view('welcome');
+//});
 
 Route::get('task/{task}/add', 'TaskItemController@index');
 Route::get('task/{task}/add/{item}', 'TaskItemController@attach');
@@ -38,14 +40,6 @@ Route::get('assigntask/{assignTask}/add/{group}', 'AssignTaskGroupController@att
 Route::delete('assigntask/{assignTask}/del/{group}', 'AssignTaskGroupController@detach');
 
 
-Route::get('rule','RuleItemController@index');
-Route::get('item/{item}/rule','RuleItemController@index');
-Route::get('item/{item}/rule/create','RuleItemController@create');
-Route::get('rule/{rule}','RuleItemController@show');
-Route::post('item/{item}/rule/store/','RuleItemController@store');
-Route::get('rule/{rule}/edit','RuleItemController@edit');
-Route::PATCH('rule/{rule}/update','RuleItemController@update');
-Route::DELETE('rule/{rule}/destroy','RuleItemController@destroy');
 
 Route::get('item/{item}/answer/create','AnswerController@create');
 Route::post('item/{item}/answer/store','AnswerController@store');
@@ -62,10 +56,6 @@ Route::post('item/{item}/answer/store','AnswerController@store');
 Route::resource('task','TaskController');
 Route::resource('user','UserController');
 Route::resource('group','GroupController');
-Route::get('group/{group}/add', 'GroupAssignController@index');
-Route::get('group/{group}/add/{user}', 'GroupAssignController@attach');
-Route::get('group/{group}/del/{user}', 'GroupAssignController@detach');
-
 //Route::resource('assigntask', 'AssignTaskController');
 
 
@@ -112,3 +102,7 @@ Route::get('/showemail/{email}', function ($email) {
 */
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

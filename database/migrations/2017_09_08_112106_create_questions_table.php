@@ -20,9 +20,6 @@ class CreateQuestionsTable extends Migration
             /*
             $table->String('type')->default("MC");
             $table->String('answer');
-            $table->String('wrongchoiseB')->nullable();
-            $table->String('wrongchoiseC')->nullable();
-            $table->String('wrongchoiseD')->nullable();
             $table->String('writer')->nullable();
             $table->String('source')->nullable();
             $table->integer('difficult')->nullable();

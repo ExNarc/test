@@ -1,20 +1,16 @@
 <!-- list.blade.php -->
 
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Group')
+
+@section('content_header')
+    <h1>Group</h1>
+@stop
 
 @section('content')
 <div class="container">
-<script type="text/javascript">
-  $(document).ready(function(){
-  $('.groupuser').hide();
 
-  $('.showuser').click(function(){
-        $(this).parent('td').children('.groupuser').toggle( "slow", function() {
-    // Animation complete.
-        });
-  });
-  });
-</script>
 <div id="msgbox">
 	@if ($errors->any())
       <div class="alert alert-danger">
@@ -45,22 +41,15 @@
 
         @endif
       </tr>
-
       @foreach($lists as $key => $row)
       <tr>
-        <td>{{$row['id']}}</td>
-        <td>{{$row['groupname']}}
-          <botton class="showuser btn btn-warning">show</botton>
-          <table class ='groupuser' border = 1>
-      @foreach($row->Users as $key => $user)
-          <tr><td><a href="{{action('UserController@show',$user['id'])}}">{{$user->name}}</a></td></tr>
+      @foreach($keys as $key => $value)
+        <td>{{$row[$value]}}</td>
       @endforeach
-        </table>
-      </td>
       @if( isset($controller) )
         <td>
-        
-        <a href="{{action(('GroupAssignController@index'),$row['id'])}}" class="btn btn-warning">Assign</a>
+        	
+        <a href="{{action(($controller . '@s'.'how'),$row['id'])}}" class="btn btn-warning">Show</a>
              <a href="{{action(($controller . '@edit'),$row['id'])}}" class="btn btn-warning">Edit</a>
         </td>
         <td>
@@ -76,4 +65,4 @@
 </table>
 
   </div>
-@endsection
+@stop

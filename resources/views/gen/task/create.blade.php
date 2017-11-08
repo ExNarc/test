@@ -1,5 +1,11 @@
 <!-- edit.blade.php -->
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Task Create')
+
+@section('content_header')
+    <h1>Task Create</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -33,4 +39,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop

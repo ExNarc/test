@@ -1,15 +1,13 @@
 <!-- create.blade.php -->
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'User Create')
+
+@section('content_header')
+    <h1>User Create</h1>
+@stop
 
 @section('content')
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Laravel 5.5 CRUD Tutorial With Example From Scratch </title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  </head>
-  <body>
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -100,7 +98,5 @@
             </div>
       </form>
     </div>
-  </body>
-</html>
 
- @endsection
+ @stop

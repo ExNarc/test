@@ -1,6 +1,12 @@
 <!-- taskitem.blade.php -->
 
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Add Task Item')
+
+@section('content_header')
+    <h1>Add Task's Item</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -18,8 +24,9 @@
       @if (\Session::has('success'))
       <div class="alert alert-success">
           <p>{{ \Session::get('success') }}</p>
+      </div>
       @endif      
-  </div><br />
+  <br />
   </div>
 <a href="{{action($backcon . '@s'.'how',$task->id)}}" class="btn btn-warning">back</a>
     <table class="table table-striped">
@@ -53,4 +60,4 @@
 </table>
 
   </div>
-@endsection
+@stop

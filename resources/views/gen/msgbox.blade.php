@@ -1,5 +1,10 @@
 <!-- msgbox.blade.php -->
 @section('msgbox')
+<div class="alert alert-danger">
+          <ul>
+                  <li>123</li>
+          </ul>
+      </div>
 	@if ($errors->any())
       <div class="alert alert-danger">
           <ul>

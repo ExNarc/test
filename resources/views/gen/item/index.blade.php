@@ -1,6 +1,12 @@
 <!-- list.blade.php -->
 
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Item')
+
+@section('content_header')
+    <h1>Item</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -26,6 +32,7 @@
     <table class="table table-striped">
 
       <tr>
+      <?php $i=0?>
       @foreach($keys as $key => $value)
         <th>{{$value}}</th>
       @endforeach
@@ -42,10 +49,27 @@
       @endforeach
       @if( isset($controller) )
         <td>
-        	<a href="{{action(('RuleItemController@index'),$row['id'])}}" class="btn btn-warning">Rules</a>
-        <a href="{{action(($controller . '@s'.'how'),$row['id'])}}" class="btn btn-warning">Show</a>
+        <!--<a href="{{action(($controller . '@s'.'how'),$row['id'])}}" class="btn btn-warning">Show</a>-->
+        <button data-toggle="collapse" data-target="#detail{{$i}}" class="btn btn-warning">Show</button>
              <a href="{{action(($controller . '@edit'),$row['id'])}}" class="btn btn-warning">Edit</a>
-
+             <div id="detail{{$i++}}" class="collapse">
+              Question : <?php echo strip_tags ($row['question']['question']);?> <br>
+             @if(!empty($row['answers'][0]))
+                Answer : <ul>
+               @foreach($row['answers'] as $answer)
+                @if($answer['correct'])
+                  <li style="color:green;">
+                   {{$answer['answer']}}
+                  </li>
+                @else
+                  <li style="color:red;">
+                   {{$answer['answer']}}
+                  </li>
+                @endif
+               @endforeach
+               </ul>
+             @endif
+            </div>
         </td>
         <td>
           <form action="{{action($controller . '@destroy',$row['id'])}}" method="post">
@@ -55,9 +79,10 @@
           </form>
         </td>
         @endif
+        <td></td>
       </tr>
       @endforeach
 </table>
 
   </div>
-@endsection
+@stop

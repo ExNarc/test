@@ -1,5 +1,11 @@
 <!-- edit.blade.php -->
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Group Create')
+
+@section('content_header')
+    <h1>Group Create</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -39,4 +45,4 @@
         </div>
     </div>
 </div>
-@endsection
+@stop
